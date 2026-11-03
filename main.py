@@ -14,6 +14,10 @@ def connDB():
 
     return(client)
 
+
+def showOne():
+    print()
+    
 def main():
     
     clt = connDB()
