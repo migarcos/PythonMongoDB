@@ -19,8 +19,8 @@ def showOne(collection):
     print("\n--- FIND ONE MEMORY MODULE ---")
     model_name = input("Enter the model name to search: ")
 
-    mem = collection.find_one()
-    
+    mem = collection.find_one({"model": model_name})
+    # print(mem)
         # for mem in memories:
     print(f"{mem['model']:<20}  U${mem['initial_price_usd']:>7,.2f}")
     # Using a case-insensitive regex search
