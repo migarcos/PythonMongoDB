@@ -19,10 +19,18 @@ def showOne(collection):
     print("\n--- FIND ONE MEMORY MODULE ---")
     model_name = input("Enter the model name to search: ")
 
-    mem = collection.find_one({"model": model_name})
-    # print(mem)
+    mem = collection.find_one( {"model": model_name} )
+
+    if mem:
+        # print(mem)
         # for mem in memories:
-    print(f"{mem['model']:<20}  U${mem['initial_price_usd']:>7,.2f}")
+        print(f"{mem['model']:<20}  U${mem['initial_price_usd']:>7,.2f}")
+        print("Characteristics:")
+        for k, v in mem.get("characteristics", {}).items():
+            print(f"  - {k}: {v}")
+    else:
+        print("No memory module found matching that model name.")
+
     # Using a case-insensitive regex search
     # mem = collection.find_one({"model": {"$regex": model_name, "$options": "i"}})
 
@@ -78,7 +86,7 @@ if __name__ == "__main__":
 '''
 {'_id': ObjectId('691a6b4d23007d3767f879e4'), 
 'manufacturer': 'G.Skill', 
-'model': 'Trident Z5RGB', 
+'model': 'Trident Z5 RGB', 
 'characteristics': {
     'capacity': '32GB (2x16GB Kit)', 
     'generation': 'DDR5', 'speed': '6400 MHz', 
