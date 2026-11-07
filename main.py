@@ -14,6 +14,12 @@ def connDB():
 
     return(client)
 
+def showAll(collection):
+    print("\n--- LIST OF MEMORY MODULES ---")
+    all = collection.find()
+
+    for mem in all:
+        print(f"{mem['model']:<20}  U${mem['initial_price_usd']:>7,.2f}")
 
 def showOne(collection):
     print("\n--- FIND ONE MEMORY MODULE ---")
@@ -68,8 +74,7 @@ def main():
         choice = input("\nSelect an option (1-6): ").strip()
 
         if choice == "1":
-            print("Working on it")
-            # showAll(collection)
+            showAll(collection)
         elif choice == "2":
             showOne(collection)
         elif choice == "6":
